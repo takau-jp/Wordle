@@ -71,7 +71,13 @@ std::string Game::readGuess() const {
     // Keep the prompt simple and leave formatting concerns to the view.
     // 入力プロンプトは簡潔に保ち、表示上の複雑さは View 側に持たせます。
     std::cout << "Enter guess: ";
+    if (!std::cout) {
+        throw std::runtime_error("failed to write input prompt");
+    }
     std::getline(std::cin, input);
+    if (std::cin.bad()) {
+        throw std::runtime_error("input stream became unusable");
+    }
     if (!std::cin) {
         throw std::runtime_error("failed to read input");
     }
