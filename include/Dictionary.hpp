@@ -3,7 +3,6 @@
 
 #include <string>
 #include <unordered_set>
-#include <vector>
 
 class Dictionary {
 public:
@@ -16,8 +15,7 @@ public:
 
 private:
     std::string path_;
-    std::vector<std::string> words_;
-    std::unordered_set<std::string> lookup_;
+    std::unordered_set<std::string> word_set_;
 };
 
 #endif
