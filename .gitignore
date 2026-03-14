@@ -1,0 +1,8 @@
+.DS_Store
+*.o
+*.md
+
+wordle
+
+# local subjects
+wordle.pdf
