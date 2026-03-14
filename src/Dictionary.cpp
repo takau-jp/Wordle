@@ -1,14 +1,41 @@
 #include "Dictionary.hpp"
 
+#include <cctype>
 #include <fstream>
 #include <random>
 #include <stdexcept>
+
+namespace {
+bool isValidDictionaryWord(const std::string& word) {
+    if (word.empty() || word.size() != 5) {
+        return false;
+    }
+    for (std::size_t index = 0; index < word.size(); ++index) {
+        if (!std::isalpha(static_cast<unsigned char>(word[index]))) {
+            return false;
+        }
+    }
+    return true;
+}
+
+std::string normalizeDictionaryWord(const std::string& line) {
+    std::string normalized = line;
+
+    if (!normalized.empty() && normalized[normalized.size() - 1] == '\r') {
+        normalized.erase(normalized.size() - 1);
+    }
+    for (std::size_t index = 0; index < normalized.size(); ++index) {
+        normalized[index] = static_cast<char>(std::tolower(static_cast<unsigned char>(normalized[index])));
+    }
+    return normalized;
+}
+}
 
 Dictionary::Dictionary(const std::string& path) : path_(path) {}
 
 void Dictionary::load() {
     std::ifstream file(path_.c_str());
-    std::string word;
+    std::string line;
 
     if (!file) {
         throw std::runtime_error("failed to open dictionary file");
@@ -19,7 +46,16 @@ void Dictionary::load() {
     // 順序付きリストとハッシュ集合の両方を保持します:
     // - vector: 正解語を選ぶときに安定したランダムアクセスができる
     // - unordered_set: プレイヤーの入力語が存在するかを高速に確認できる
-    while (file >> word) {
+    // Skip malformed lines so accidental blanks or bad tokens do not poison
+    // the in-memory dictionary used by the game.
+    // 不正な行は読み飛ばし、空行や不正な単語がゲーム内の辞書に
+    // 混入しないようにします。
+    while (std::getline(file, line)) {
+        const std::string word = normalizeDictionaryWord(line);
+
+        if (!isValidDictionaryWord(word)) {
+            continue;
+        }
         words_.push_back(word);
         lookup_.insert(word);
     }
