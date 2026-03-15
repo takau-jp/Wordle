@@ -9,20 +9,10 @@
 ```bash
 git clone <repo-url>
 cd Wordle
-make
+make web
 ```
 
-ブラウザで `http://localhost:8080/src/` にアクセス。
-
-### Makefileターゲット
-
-| コマンド | 内容 |
-| --- | --- |
-| `make` / `make all` | 依存インストール + コンパイル + サーバー起動 |
-| `make run` | コンパイル + サーバー起動 |
-| `make clean` | `dist/` のコンパイル済みファイルを削除（`.map` と `.d.ts` も含む） |
-| `make fclean` | `clean` + `node_modules/` を削除 |
-| `make re` | `fclean` + `all` |
+ブラウザで `http://localhost:8080/web/` にアクセス。
 
 ---
 
@@ -174,5 +164,5 @@ make run
 ブラウザで以下にアクセス:
 
 ```text
-http://localhost:8080/src/
+http://localhost:8080/web/
 ```

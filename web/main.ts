@@ -227,5 +227,3 @@ function submitGuess(): void {
 		gameOver = true;
 	}
 }
-
-
