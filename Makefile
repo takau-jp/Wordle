@@ -16,7 +16,6 @@ all: $(NAME)
 web:
 	npm install
 	npm run build
-	@-pkill -f "http.server 8080"
 	@echo "\n\033[1;32mhttp://localhost:8080/web/\033[0m\n"
 	python3 -m http.server 8080
 
@@ -28,7 +27,7 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
-	rm -f dist/main.js.map dist/main.d.ts dist/main.d.ts.map
+	rm -f dist/*
 
 fclean: clean
 	rm -f $(NAME)
