@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Wordle</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<h1>Wordle</h1>
+		<div id="message"></div>
+
+		<!-- ゲームボード：6行 × 5列のマス。各マスに1文字が入る -->
+		<div id="board">
+			<!-- 1回目の推測 -->
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<!-- 2回目の推測 -->
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<!-- 3回目の推測 -->
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<!-- 4回目の推測 -->
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<!-- 5回目の推測 -->
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<!-- 6回目の推測 -->
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+		</div>
+
+		<!-- 画面上のキーボード：クリックでも文字入力できる -->
+		<div id="keyboard">
+			<!-- 1段目：Q〜P -->
+			<div class="key-row">
+				<button class="key">Q</button>
+				<button class="key">W</button>
+				<button class="key">E</button>
+				<button class="key">R</button>
+				<button class="key">T</button>
+				<button class="key">Y</button>
+				<button class="key">U</button>
+				<button class="key">I</button>
+				<button class="key">O</button>
+				<button class="key">P</button>
+			</div>
+			<!-- 2段目：A〜L -->
+			<div class="key-row">
+				<button class="key">A</button>
+				<button class="key">S</button>
+				<button class="key">D</button>
+				<button class="key">F</button>
+				<button class="key">G</button>
+				<button class="key">H</button>
+				<button class="key">J</button>
+				<button class="key">K</button>
+				<button class="key">L</button>
+			</div>
+			<!-- 3段目：Z〜M（Enter と Backspace は後で追加） -->
+			<div class="key-row">
+				<button class="key key-enter">Enter</button>
+				<button class="key">Z</button>
+				<button class="key">X</button>
+				<button class="key">C</button>
+				<button class="key">V</button>
+				<button class="key">B</button>
+				<button class="key">N</button>
+				<button class="key">M</button>
+				<button class="key key-backspace">Backspace</button>
+			</div>
+		</div>
+
+		<!-- tsc でコンパイルされた JS を読み込む（body末尾に置くことでDOM構築後に実行される） -->
+		<!-- type="module" main.ts のトップレベル変数はモジュールスコープに閉じられ、開発者ツールからアクセスできなくなる -->
+		<script type="module" src="../dist/main.js"></script>
+	</body>
+</html>
