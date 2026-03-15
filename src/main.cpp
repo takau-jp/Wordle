@@ -25,6 +25,13 @@ std::string normalizeArgument(const std::string& input) {
 
 int main(int argc, char** argv) {
     try {
+        // Escalate broken standard streams to exceptions. We intentionally do
+        // not treat ordinary EOF as exceptional, so only badbit is enabled.
+        // 壊れた標準ストリームは例外に昇格させます。通常の EOF は例外扱いに
+        // したくないため、badbit だけを有効にしています。
+        std::cin.exceptions(std::ios::badbit);
+        std::cout.exceptions(std::ios::badbit);
+
         // Centralized runtime options. Keeping them together makes it easy
         // to switch between normal play and deterministic test runs.
         // 実行時オプションを一か所に集約しています。まとめておくことで、

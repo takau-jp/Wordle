@@ -2,6 +2,7 @@
 
 #include <cctype>
 #include <iostream>
+#include <stdexcept>
 
 #include "Color.hpp"
 
@@ -26,6 +27,9 @@ const std::string& stateColor(LetterState state) {
 void TerminalView::printWelcome() const {
     std::cout << "Welcome to Wordle CLI" << std::endl;
     std::cout << "Guess the 5-letter word in 6 tries." << std::endl;
+    if (!std::cout) {
+        throw std::runtime_error("failed to write welcome message");
+    }
 }
 
 void TerminalView::printBoard(const std::vector<GuessResult>& history) const {
@@ -43,16 +47,28 @@ void TerminalView::printBoard(const std::vector<GuessResult>& history) const {
         std::cout << std::endl;
     }
     std::cout << std::endl;
+    if (!std::cout) {
+        throw std::runtime_error("failed to write board");
+    }
 }
 
 void TerminalView::printError(const std::string& message) const {
     std::cout << "Error: " << message << std::endl;
+    if (!std::cout) {
+        throw std::runtime_error("failed to write error message");
+    }
 }
 
 void TerminalView::printWin(int attempts) const {
     std::cout << "You win in " << attempts << " attempts." << std::endl;
+    if (!std::cout) {
+        throw std::runtime_error("failed to write win message");
+    }
 }
 
 void TerminalView::printLose(const std::string& answer) const {
     std::cout << "You lose. Answer: " << answer << std::endl;
+    if (!std::cout) {
+        throw std::runtime_error("failed to write lose message");
+    }
 }

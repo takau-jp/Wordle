@@ -41,6 +41,12 @@ void Dictionary::load() {
     if (!file) {
         throw std::runtime_error("failed to open dictionary file");
     }
+    // Treat low-level stream corruption as exceptional. We still rely on the
+    // normal loop condition for EOF, but a broken file stream should abort.
+    // 低レベルのストリーム破損は例外として扱います。EOF は通常のループ条件で処理し、
+    // 壊れたファイルストリームはその場で中断させます。
+    file.exceptions(std::ifstream::badbit);
+
     // A single unordered_set is enough here:
     // - membership checks stay fast
     // - random selection is needed only once per run, so a linear advance
@@ -61,7 +67,10 @@ void Dictionary::load() {
         }
         word_set_.insert(word);
     }
-    if (word_set_.empty()) {
+    if (!file.eof() && file.fail()) {
+        throw std::runtime_error("failed while reading dictionary file");
+    }
+    if (words_.empty()) {
         throw std::runtime_error("dictionary is empty");
     }
 }
