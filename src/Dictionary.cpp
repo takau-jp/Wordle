@@ -70,7 +70,7 @@ void Dictionary::load() {
     if (!file.eof() && file.fail()) {
         throw std::runtime_error("failed while reading dictionary file");
     }
-    if (words_.empty()) {
+    if (word_set_.empty()) {
         throw std::runtime_error("dictionary is empty");
     }
 }
