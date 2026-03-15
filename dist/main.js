@@ -120,7 +120,7 @@ function submitGuess() {
         return;
     }
     // 現在の行のセル（マス）をすべて取得
-    const cells = board.querySelectorAll(".row")[currentRow].querySelectorAll("cells");
+    const cells = board.querySelectorAll(".row")[currentRow].querySelectorAll(".cell");
     // 
     const result = Array(WORD_LENGTH).fill("absent");
     // Recode(辞書)に答えに含まれるその文字の個数をもたせる

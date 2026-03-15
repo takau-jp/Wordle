@@ -141,7 +141,7 @@ function submitGuess(): void {
 	}
 
 	// 現在の行のセル（マス）をすべて取得
-	const cells = board.querySelectorAll(".row")[currentRow]!.querySelectorAll("cells");
+	const cells = board.querySelectorAll(".row")[currentRow]!.querySelectorAll(".cell");
 
 	// 状態　correct(緑), present(黃), absent(灰)
 	type TileStatus = "correct" | "present" | "absent"; 
