@@ -1,0 +1,26 @@
+{
+  "name": "wordle",
+  "version": "1.0.0",
+  "description": "ブラウザで動くWordleゲームの実装ハンズオン。",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takau-jp/Wordle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/takau-jp/Wordle/issues"
+  },
+  "homepage": "https://github.com/takau-jp/Wordle#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

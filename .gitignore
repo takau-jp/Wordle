@@ -1,8 +1,13 @@
 .DS_Store
+
+# cli
 *.o
 *.md
-
 wordle
+
+# web-ui
+node_modules
+dist
 
 # local subjects
 wordle.pdf
