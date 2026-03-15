@@ -20,7 +20,7 @@ make
 | --- | --- |
 | `make` / `make all` | 依存インストール + コンパイル + サーバー起動 |
 | `make run` | コンパイル + サーバー起動 |
-| `make clean` | `dist/` のコンパイル済みファイルを削除 |
+| `make clean` | `dist/` のコンパイル済みファイルを削除（`.map` と `.d.ts` も含む） |
 | `make fclean` | `clean` + `node_modules/` を削除 |
 | `make re` | `fclean` + `all` |
 
@@ -138,6 +138,20 @@ src/
   "watch": "tsc --watch"  // ファイル変更を検知して自動コンパイル
 }
 ```
+
+```bash
+npm run build
+```
+
+### `dist/` に生成されるファイル
+
+| ファイル | 用途 |
+| --- | --- | --- |
+| `main.js` | コンパイル済みJS（実行に必要） |
+| `main.js.map` | ソースマップ（デバッグ用） |
+| `main.d.ts` | TypeScript型定義（ライブラリとして公開する場合に必要） |
+| `main.d.ts.map` | 型定義のソースマップ（デバッグ用） |
+
 
 開発中は別ターミナルで watch を起動しておく:
 

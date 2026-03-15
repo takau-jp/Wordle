@@ -1,3 +1,13 @@
+.DS_Store
+
+# cli
+*.o
+*.md
+wordle
+
+# web-ui
 node_modules
-package-lock.json
 dist
+
+# local subjects
+wordle.pdf

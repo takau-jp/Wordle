@@ -55,7 +55,7 @@ async function init() {
 async function loadWords() {
     try {
         // words.txt を HTTP で取得
-        const res = await fetch("../words.txt");
+        const res = await fetch("../data/words.txt");
         if (!res.ok)
             throw new Error(`HTTP error: ${res.status}`);
         // レスポンスをテキストとして読み込む
